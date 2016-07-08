@@ -66,3 +66,6 @@ fastlane/test_output
 
 # DS Store file
 .DS_Store
+
+# Documents folder
+documents/
