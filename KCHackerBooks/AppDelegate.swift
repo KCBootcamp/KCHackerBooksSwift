@@ -12,11 +12,44 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         //Crear una window
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        do{
+            //var changeURL : Bool =  false
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var json : JSONArray = []
+        if let name = defaults.objectForKey(UserDefaultKeys.jsonFile.rawValue) as? String{
+            let filePath = try PathForFile(name, directory: nil)
+            print (filePath)
+            //changeURL = true
+            json = try loadJSONFromLocalFile(filePath)
+            
+        } else {
+            json = try DownloadJSON()
+           
+            
+            //changeURL = true
+            defaults.setObject(FilesName.booksFile.rawValue, forKey: UserDefaultKeys.jsonFile.rawValue)
+        }
+            
+        var chars = [BVCBook]()
+        for dict in json{
+            do{
+                let char = try decode (hackerBook: dict)
+                chars.append(char)
+            }catch{
+                print("Error al procesar \(dict)")
+            }
+        }
+        
+        //Podemos crear el modelo
+        let model = BVCLibrary (books: chars, tags: ["otros"])
+        
+         print("Model cargado")
         //Crear un VC
         let vc = UIViewController(nibName: nil, bundle: nil)
         // Empotrarlo en un anvigation
@@ -27,6 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
+    }catch{
+        fatalError("Error while loading JSON")
+    }
     }
 
     func applicationWillResignActive(application: UIApplication) {
