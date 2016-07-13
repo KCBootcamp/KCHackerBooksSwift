@@ -19,6 +19,7 @@
 		7FAACA441D32C8AE005593C2 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAACA431D32C8AE005593C2 /* Foundation.swift */; };
 		7FAACA491D33A124005593C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAACA481D33A124005593C2 /* Constants.swift */; };
 		7FAACA4B1D33A130005593C2 /* StoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAACA4A1D33A130005593C2 /* StoreHelper.swift */; };
+		7FAACA4D1D366FDD005593C2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAACA4C1D366FDD005593C2 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		7FAACA431D32C8AE005593C2 /* Foundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		7FAACA481D33A124005593C2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7FAACA4A1D33A130005593C2 /* StoreHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreHelper.swift; sourceTree = "<group>"; };
+		7FAACA4C1D366FDD005593C2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			children = (
 				7FAACA481D33A124005593C2 /* Constants.swift */,
 				7FAACA4A1D33A130005593C2 /* StoreHelper.swift */,
+				7FAACA4C1D366FDD005593C2 /* Utilities.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				7FAACA401D32B232005593C2 /* BVCHBooksErrors.swift in Sources */,
 				7FAACA3C1D2FD62B005593C2 /* BVCLibrary.swift in Sources */,
 				7FAACA491D33A124005593C2 /* Constants.swift in Sources */,
+				7FAACA4D1D366FDD005593C2 /* Utilities.swift in Sources */,
 				7F073F2D1D2FAE040015F2AC /* AppDelegate.swift in Sources */,
 				7FAACA421D32B8C3005593C2 /* BVCHBooksJSONProcessing.swift in Sources */,
 			);
