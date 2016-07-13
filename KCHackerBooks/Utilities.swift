@@ -14,6 +14,30 @@ func convertStringToArray (string : String, separator: String) -> [String]{
     return string.componentsSeparatedByString(separator)
 }
 
+func convertArrayToString(array: [String]?) -> String? {
+    var string : String?
+    if let elements = array {
+        string = convertArrayToString(elements)
+    }
+    return string
+}
+
+func convertArrayToString(array: [String]) -> String? {
+    var string : String = ""
+    
+        for element in array{
+            var connector = ", "
+            if element == array.last{
+                connector = "."
+            } else if element == array[array.count-2]{
+                connector = " & "
+            }
+            string = string + element.capitalizedString + connector
+        }
+    
+    return string
+}
+
 
 //MARK: - Path and URL Utilities
 func PathForFile(fileName: String, directory: String?) throws-> String{

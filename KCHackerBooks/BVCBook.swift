@@ -44,26 +44,13 @@ class BVCBook : Comparable {
         
     }
     
-    func convertToString(authorsArray: [String]?) -> String? {
-        var authorsString : String?
-        if let authors = authorsArray {
-            
-            for author in authors{
-                var connector = ", "
-                if author == authors.last{
-                    connector = "."
-                }
-                authorsString = author + connector
-            }
-        }
-        return authorsString
-    }
+ 
     
     
     //MARK: - Proxies
     var proxyForComparison : String{
         get{
-            let authorString = convertToString(authors)
+            let authorString = convertArrayToString(authors)
             guard (authorString == nil) else{
                 return "\(title)\(authorString)\(pdfURL)"
             }
@@ -86,7 +73,7 @@ extension BVCBook: CustomStringConvertible{
     //MARK: - CustomStringConvertible
     var description: String {
         get{
-            let authorsString = convertToString(authors)
+            let authorsString = convertArrayToString(authors)
             
             
             guard (authorsString == nil) else{

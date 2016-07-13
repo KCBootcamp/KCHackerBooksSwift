@@ -19,6 +19,7 @@ enum RelativePathValues: String {
 
 enum FilesName: String {
     case booksFile = "books_readable.json"
+    case appName = "Geek Reader"
 }
 
 enum DownloadUrls:  String {
