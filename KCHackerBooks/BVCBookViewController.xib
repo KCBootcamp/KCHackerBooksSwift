@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Georgia.ttf">
+            <string>Georgia</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BVCBookViewController" customModule="KCHackerBooks" customModuleProvider="target">
+            <connections>
+                <outlet property="authorsLabel" destination="dnJ-Mr-TD3" id="whx-vp-pNP"/>
+                <outlet property="imageView" destination="EuS-Bg-mMI" id="fei-fr-iCa"/>
+                <outlet property="tagsLabel" destination="X0d-Ud-VXJ" id="SWQ-FN-CUq"/>
+                <outlet property="titleLabel" destination="Eku-jg-c24" id="7oJ-0d-Bqn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYL-4M-FIs">
+                    <rect key="frame" x="0.0" y="20" width="600" height="880"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eku-jg-c24">
+                            <rect key="frame" x="209" y="40" width="182" height="73"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Label">
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <font key="NSFont" size="64" name="Georgia-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EuS-Bg-mMI">
+                            <rect key="frame" x="200" y="153" width="200" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="240" id="8NC-7V-5RG"/>
+                                <constraint firstAttribute="width" secondItem="EuS-Bg-mMI" secondAttribute="height" multiplier="1:1" id="Pvn-RN-E6J"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="8NC-7V-5RG"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI3-eN-HKW">
+                            <rect key="frame" x="253" y="393" width="94" height="48"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Written by">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="14" name="Zapfino"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnJ-Mr-TD3">
+                            <rect key="frame" x="251" y="461" width="98" height="95"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Label">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="28" name="Zapfino"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0d-Ud-VXJ">
+                            <rect key="frame" x="249" y="644" width="103" height="41"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Label">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="36" name="Georgia-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vK7-Lr-RHy">
+                            <rect key="frame" x="260" y="596" width="81" height="28"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Topics">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="24" name="Georgia-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0e-sY-Ele">
+                            <rect key="frame" x="209" y="725" width="183" height="57"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="32"/>
+                            <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                            <size key="titleShadowOffset" width="25" height="0.0"/>
+                            <state key="normal" title="Read Book">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="EuS-Bg-mMI" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="1G1-sZ-0Jb"/>
+                        <constraint firstItem="EuS-Bg-mMI" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="4sS-G6-Yzp"/>
+                        <constraint firstItem="Eku-jg-c24" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="9YL-hT-mV1"/>
+                        <constraint firstItem="wI3-eN-HKW" firstAttribute="top" secondItem="EuS-Bg-mMI" secondAttribute="bottom" constant="40" id="AM2-Ms-Oyr"/>
+                        <constraint firstItem="EuS-Bg-mMI" firstAttribute="top" secondItem="Eku-jg-c24" secondAttribute="bottom" constant="40" id="GF3-Sj-Yja"/>
+                        <constraint firstItem="dnJ-Mr-TD3" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="NHX-lg-I5u"/>
+                        <constraint firstAttribute="trailing" secondItem="EuS-Bg-mMI" secondAttribute="trailing" constant="200" id="TV1-fb-xvz"/>
+                        <constraint firstItem="vK7-Lr-RHy" firstAttribute="top" secondItem="dnJ-Mr-TD3" secondAttribute="bottom" constant="40" id="TlB-G5-MhE"/>
+                        <constraint firstItem="X0d-Ud-VXJ" firstAttribute="top" secondItem="vK7-Lr-RHy" secondAttribute="bottom" constant="20" id="U73-6c-rb3"/>
+                        <constraint firstItem="Eku-jg-c24" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="Vnu-Dr-esf"/>
+                        <constraint firstItem="dnJ-Mr-TD3" firstAttribute="top" secondItem="wI3-eN-HKW" secondAttribute="bottom" constant="20" id="cfE-nU-Cbb"/>
+                        <constraint firstItem="X0d-Ud-VXJ" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="eSb-Kq-HiV"/>
+                        <constraint firstItem="F0e-sY-Ele" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="gP6-4C-Bid"/>
+                        <constraint firstItem="wI3-eN-HKW" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="gxN-no-so2"/>
+                        <constraint firstAttribute="bottom" secondItem="X0d-Ud-VXJ" secondAttribute="bottom" constant="176" id="k57-aN-Lao"/>
+                        <constraint firstItem="F0e-sY-Ele" firstAttribute="top" secondItem="X0d-Ud-VXJ" secondAttribute="bottom" constant="40" id="l2O-71-2dn"/>
+                        <constraint firstItem="EuS-Bg-mMI" firstAttribute="leading" secondItem="CYL-4M-FIs" secondAttribute="leading" constant="200" id="njp-pt-bFu"/>
+                        <constraint firstItem="Eku-jg-c24" firstAttribute="top" secondItem="CYL-4M-FIs" secondAttribute="top" constant="40" id="qV2-OW-sME"/>
+                        <constraint firstItem="vK7-Lr-RHy" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="s9W-y2-aTG"/>
+                        <constraint firstItem="Eku-jg-c24" firstAttribute="top" secondItem="CYL-4M-FIs" secondAttribute="top" constant="80" id="wQF-yT-Hcp"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Vnu-Dr-esf"/>
+                            <exclude reference="wQF-yT-Hcp"/>
+                            <exclude reference="4sS-G6-Yzp"/>
+                        </mask>
+                    </variation>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CYL-4M-FIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="COz-25-EmD"/>
+                <constraint firstAttribute="bottom" secondItem="CYL-4M-FIs" secondAttribute="bottom" id="ElV-Uw-ajj"/>
+                <constraint firstItem="CYL-4M-FIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MpK-ld-bub"/>
+                <constraint firstItem="CYL-4M-FIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pa1-1f-ih2"/>
+                <constraint firstItem="CYL-4M-FIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Pvs-Ef-Bzb"/>
+                <constraint firstAttribute="trailing" secondItem="CYL-4M-FIs" secondAttribute="trailing" id="XnE-bd-N5s"/>
+                <constraint firstItem="CYL-4M-FIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ger-cn-x1K"/>
+                <constraint firstAttribute="trailing" secondItem="CYL-4M-FIs" secondAttribute="trailing" id="gzO-SM-uSy"/>
+                <constraint firstAttribute="trailing" secondItem="CYL-4M-FIs" secondAttribute="trailing" id="k93-4t-Zc2"/>
+                <constraint firstItem="CYL-4M-FIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oDy-FX-3tb"/>
+                <constraint firstAttribute="bottom" secondItem="CYL-4M-FIs" secondAttribute="bottom" id="pCU-0R-tsU"/>
+                <constraint firstAttribute="bottom" secondItem="CYL-4M-FIs" secondAttribute="bottom" id="xKe-CE-fMY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="COz-25-EmD"/>
+                    <exclude reference="MpK-ld-bub"/>
+                    <exclude reference="XnE-bd-N5s"/>
+                    <exclude reference="k93-4t-Zc2"/>
+                    <exclude reference="oDy-FX-3tb"/>
+                    <exclude reference="pCU-0R-tsU"/>
+                    <exclude reference="xKe-CE-fMY"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="475" y="39"/>
+        </view>
+    </objects>
+</document>

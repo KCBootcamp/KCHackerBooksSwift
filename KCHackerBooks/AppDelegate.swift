@@ -49,9 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Podemos crear el modelo
         let model = BVCLibrary (books: chars, tags: ["otros"])
         
-         print("Model cargado")
+         print("Model loaded")
         //Crear un VC
-        let vc = UIViewController(nibName: nil, bundle: nil)
+        let vc = BVCBookViewController(model: model.books[0])
         // Empotrarlo en un anvigation
         let navVC = UINavigationController (rootViewController: vc)
         // Asignar el NAV como rootVC
