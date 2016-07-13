@@ -25,15 +25,6 @@ typealias JSONArray         =   [JSONDictionary]
 func decode (hackerBook  json: JSONDictionary) throws -> BVCBook{
     
     //Validation
-    
-    //TODO: check and modify
-
-//    guard let imageUrlStr = imageStr,
-//        imageUrl = NSURL(string:(imageUrlStr)),
-//        imageData = NSData(contentsOfURL:imageUrl),
-//        image = UIImage (data: imageData) else{
-//            throw BVCHackersBookErrors.resourcePointedByURLNotReachable
-//    }
     let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     
     guard let imageStr = json["image_url"] as? String,
@@ -67,34 +58,11 @@ func decode (hackerBook  json: JSONDictionary) throws -> BVCBook{
     
 
 }
-//
-//func decode(hackerBook json: JSONDictionary?, modifyURLs: Bool) throws -> BVCBook{
-//    
-//    
-//    if case .Some(let jsonDict) = json{
-//        return try decode(hackerBook: jsonDict)
-//    }else{
-//        throw BVCHackersBookErrors.nilJSONObject
-//    }
-//}
 
-//MARK: - Loading
-func loadFromLocalFile(fileName name: String, bundle: NSBundle = NSBundle.mainBundle()) throws -> JSONArray{
-    
-    if let url = bundle.URLForResource(name),
-        data = NSData(contentsOfURL: url),
-        maybeArray = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? JSONArray,
-        array = maybeArray{
-        
-        return array
-        
+func decode(hackerBook json: JSONDictionary?) throws -> BVCBook{
+    if case .Some(let jsonDict) = json{
+        return try decode(hackerBook: jsonDict)
     }else{
-        throw BVCHackersBookErrors.jsonParsingError
+        throw BVCHackersBookErrors.nilJSONObject
     }
-}
-
-
-//MARK: - Utilities
-func convertStringToArray (string : String, separator: String) -> [String]{
-    return string.componentsSeparatedByString(separator)
 }
