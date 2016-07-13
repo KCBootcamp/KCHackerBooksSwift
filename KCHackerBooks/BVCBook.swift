@@ -14,7 +14,7 @@ class BVCBook : Comparable {
     //MARK: - Stored properties
     let title       :   String
     let authors     :   [String]?
-    let tags        :   String
+    let tags        :   [String]?
     let image       :   UIImage?
     let pdfURL      :   NSURL
     let isFavourite :   Bool
@@ -22,7 +22,7 @@ class BVCBook : Comparable {
     
     //MARK: - Initializers
     init(title: String, authors: [String]?,
-         tags: String, image: UIImage?,
+         tags: [String]?, image: UIImage?,
          pdfURL: NSURL, isFavourite: Bool){
         
         self.title          =   title
@@ -35,7 +35,7 @@ class BVCBook : Comparable {
     }
     
     convenience init (title: String, authors: [String]?,
-                      tags: String, image: UIImage?,
+                      tags: [String]?, image: UIImage?,
                       pdfURL: NSURL){
         
         self.init (title: title, authors: authors,
