@@ -27,7 +27,7 @@ func decode (hackerBook  json: JSONDictionary) throws -> BVCBook{
     //Validation
     let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     
-    guard let imageStr = json[Const.Json.pdfURLKey] as? String,
+    guard let imageStr = json[Const.Json.imageURLKey] as? String,
         imageUrlStr =  (NSURL (fileURLWithPath: documentsPath).URLByAppendingPathComponent(imageStr)).path,
         image = UIImage(named: imageUrlStr)
     else{
