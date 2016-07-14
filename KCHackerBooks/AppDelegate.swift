@@ -37,18 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
             
         var chars = [BVCBook]()
+            var tags : [String] = []
         for dict in json{
             do{
                 let char = try decode (hackerBook: dict)
+                
+                //fillLibraryTagsArrayWithTags(char.tags)
                 chars.append(char)
+                tags = fillArrayWithNotRepeatedElements(tags, elementsToAdd: char.tags)
             }catch{
                 print("Error al procesar \(dict)")
             }
         }
         
         //Podemos crear el modelo
-        let model = BVCLibrary (books: chars, tags: ["otros"])
-        
+        let model = BVCLibrary (books: chars, tags: tags)
          print("Model loaded")
         //Crear un VC
         let vc = BVCBookViewController(model: model.books[0])

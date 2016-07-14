@@ -11,14 +11,14 @@ import Foundation
 class BVCLibrary  {
     
     //MARK: - Initializers
-    init (books : [BVCBook], tags: [String]){
+    init (books : [BVCBook], tags: [String]?){
         self.books  =   books
         self.tags   =   tags
     }
     
     //MARK: - Stored properties
     let books   :   [BVCBook]
-    let tags    :   [String]
+    let tags    :   [String]?
     
     //MARK: - Computed properties
     var booksCount : Int{
@@ -39,10 +39,12 @@ class BVCLibrary  {
     
     func sortByTags() -> BVCBookArray{
         var sortedBooks : BVCBookArray = []
+        if let tags = tags{
         for tagElement in tags{
             if let booksForTagArray = booksForTag(tagElement){
                 sortedBooks.appendContentsOf(booksForTagArray.sort({$0<$1}))
             }
+        }
         }
         return sortedBooks
     }
