@@ -29,7 +29,7 @@ class BVCBookViewController: UIViewController {
     
     func syncModelWithView(){
         
-        title =  FilesName.appName.rawValue
+        title =  Const.App.appName
         imageView.image = model.image
         titleLabel.text = model.title
         authorsLabel.text = convertArrayToString(model.authors)

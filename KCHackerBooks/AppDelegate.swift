@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //var changeURL : Bool =  false
         let defaults = NSUserDefaults.standardUserDefaults()
         var json : JSONArray = []
-        if let name = defaults.objectForKey(UserDefaultKeys.jsonFile.rawValue) as? String{
+        if let name = defaults.objectForKey(Const.UserDefaultKeys.jsonFile) as? String{
             let filePath = try PathForFile(name, directory: nil)
             print (filePath)
             //changeURL = true
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            
             
             //changeURL = true
-            defaults.setObject(FilesName.booksFile.rawValue, forKey: UserDefaultKeys.jsonFile.rawValue)
+            defaults.setObject(Const.FilesName.booksFile, forKey: Const.UserDefaultKeys.jsonFile)
         }
             
         var chars = [BVCBook]()

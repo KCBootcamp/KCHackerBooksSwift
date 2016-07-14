@@ -8,20 +8,33 @@
 
 import Foundation
 
-enum UserDefaultKeys: String{
-    case jsonFile = "json"
-}
-
-enum RelativePathValues: String {
-    case imagesPath = "images/"
-    case pdfsPath = "pdfs/"
-}
-
-enum FilesName: String {
-    case booksFile = "books_readable.json"
-    case appName = "Geek Reader"
-}
-
-enum DownloadUrls:  String {
-    case jsonUrl = "https://t.co/K9ziV0z3SJ"
+struct Const {
+    
+    struct App {
+        static let appName      =   "Geek Reader"
+    }
+    struct UserDefaultKeys {
+        static let jsonFile     =   "json"
+    }
+    struct RelativePathValues{
+        static let imagesPath   =   "images/"
+        static let pdfsPath     =   "pdfs/"
+    }
+    
+    struct FilesName {
+        static let booksFile    =   "books_readable.json"
+        
+    }
+    
+    struct DownloadUrls {
+        static let jsonUrl  =   "https://t.co/K9ziV0z3SJ"
+    }
+    struct Json {
+        static let titleKey     =   "title"
+        static let authorsKey   =   "authors"
+        static let tagsKey      =   "tags"
+        static let imageURLKey  =   "image_url"
+        static let pdfURLKey    =   "pdf_url"
+    }
+    
 }

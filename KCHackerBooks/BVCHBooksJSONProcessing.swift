@@ -27,30 +27,30 @@ func decode (hackerBook  json: JSONDictionary) throws -> BVCBook{
     //Validation
     let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     
-    guard let imageStr = json["image_url"] as? String,
+    guard let imageStr = json[Const.Json.pdfURLKey] as? String,
         imageUrlStr =  (NSURL (fileURLWithPath: documentsPath).URLByAppendingPathComponent(imageStr)).path,
         image = UIImage(named: imageUrlStr)
     else{
         throw BVCHackersBookErrors.resourcePointedByURLNotReachable
     }
 
-    guard let pdfStr = json["pdf_url"] as? String,
+    guard let pdfStr = json[Const.Json.pdfURLKey] as? String,
         urlStr = (NSURL (fileURLWithPath: documentsPath).URLByAppendingPathComponent(pdfStr)).path, url = NSURL(string: urlStr) else{
         throw BVCHackersBookErrors.wrongURLFormatForJSONResource
     }
     
-    guard let authors = json["authors"] as? String,
+    guard let authors = json[Const.Json.authorsKey] as? String,
     authorsArray : [String]? = convertStringToArray(authors, separator: ", ") else {
             throw BVCHackersBookErrors.wrongJSONFormat
     }
     
-    guard let tags = json["tags"] as? String,
+    guard let tags = json[Const.Json.tagsKey] as? String,
         tagsArray : [String]? = convertStringToArray(tags, separator: ", ")
         else {
             throw BVCHackersBookErrors.wrongJSONFormat
     }
     
-    if let title = json["title"] as? String {
+    if let title = json[Const.Json.titleKey] as? String {
         return BVCBook(title: title, authors: authorsArray, tags: tagsArray, image: image, pdfURL: url)
     }else{
         throw BVCHackersBookErrors.wrongJSONFormat

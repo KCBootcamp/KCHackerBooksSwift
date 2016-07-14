@@ -24,22 +24,22 @@ func DownloadJSON() throws -> JSONArray {
     
     //TODO change to NSURLRequest and NSURLConnection with asynchronous download (completion block)
     do{
-        let data =  try NSData(contentsOfURL: NSURL(string:  DownloadUrls.jsonUrl.rawValue)!, options: NSDataReadingOptions())
+        let data =  try NSData(contentsOfURL: NSURL(string:  Const.DownloadUrls.jsonUrl)!, options: NSDataReadingOptions())
     
         let jsonArray = try convertDataToJSONArray(data)
         var json : JSONArray = []
         
         for var dict in jsonArray{
-             DownloadResource(dict["image_url"] as? String, resourceType: RelativePathValues.imagesPath.rawValue)
-             DownloadResource(dict["pdf_url"] as? String, resourceType: RelativePathValues.pdfsPath.rawValue)
-            let imageStr = try relativePathForURL(dict["image_url"] as? String, resourceType: RelativePathValues.imagesPath.rawValue)
-            let pdfStr = try relativePathForURL(dict["pdf_url"] as? String, resourceType: RelativePathValues.pdfsPath.rawValue)
+             DownloadResource(dict[Const.Json.imageURLKey] as? String, resourceType: Const.RelativePathValues.imagesPath)
+             DownloadResource(dict[Const.Json.pdfURLKey] as? String, resourceType: Const.RelativePathValues.pdfsPath)
+            let imageStr = try relativePathForURL(dict[Const.Json.imageURLKey] as? String, resourceType: Const.RelativePathValues.imagesPath)
+            let pdfStr = try relativePathForURL(dict[Const.Json.pdfURLKey] as? String, resourceType: Const.RelativePathValues.pdfsPath)
             
-            json.append(bookDictionaryForTitle(dict["title"] as? String, authors: dict["authors"] as? String, tags: dict["tags"] as? String, imageUrl: imageStr, pdfUrl: pdfStr))
+            json.append(bookDictionaryForTitle(dict[Const.Json.titleKey] as? String, authors: dict[Const.Json.authorsKey] as? String, tags: dict[Const.Json.tagsKey] as? String, imageUrl: imageStr, pdfUrl: pdfStr))
 
         }
         
-        let filePath = try PathForFile(FilesName.booksFile.rawValue, directory: nil)
+        let filePath = try PathForFile(Const.FilesName.booksFile, directory: nil)
         print(filePath)
         if let dataModified = try? NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted){
             dataModified.writeToFile(filePath, atomically: true)
@@ -79,19 +79,19 @@ func DownloadResource(resourceUrl: String?, resourceType: String) {
 func bookDictionaryForTitle (title:String?, authors:String?, tags:String?, imageUrl: String?, pdfUrl: String?)->JSONDictionary{
     var dic : JSONDictionary = [:]
     if let title = title {
-        dic["title"] = title
+        dic[Const.Json.titleKey] = title
     }
     if let authors = authors {
-        dic["authors"] = authors
+        dic[Const.Json.authorsKey] = authors
     }
     if let tags = tags {
-        dic["tags"] = tags
+        dic[Const.Json.tagsKey] = tags
     }
     if let imageUrl = imageUrl {
-        dic["image_url"] = imageUrl
+        dic[Const.Json.imageURLKey] = imageUrl
     }
     if let pdfUrl = pdfUrl {
-        dic["pdf_url"] = pdfUrl
+        dic[Const.Json.pdfURLKey] = pdfUrl
     }
     return dic
 }
