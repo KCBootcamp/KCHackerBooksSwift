@@ -1,5 +1,5 @@
 //
-//  BVCBookViewController.swift
+//  BVCBookPDFViewController.swift
 //  KCHackerBooks
 //
 //  Created by Bhavish Chandnani on 13/7/16.
@@ -8,16 +8,11 @@
 
 import UIKit
 
-class BVCBookViewController: UIViewController {
+class BVCBookPDFViewController: UIViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var authorsLabel: UILabel!
-    @IBOutlet weak var tagsLabel: UILabel!
-    
+    @IBOutlet weak var webView: UIWebView!
     let model : BVCBook
     
-    //MARK: - Initialization
     init(model: BVCBook){
         self.model = model
         super.init(nibName: nil, bundle: nil)
@@ -26,33 +21,11 @@ class BVCBookViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - Actions
-    @IBAction func readBtnClicked(sender: AnyObject) {
-        navigationController?.pushViewController(BVCBookPDFViewController(model: model), animated: true)
-    }
-    
-    //MARK: - Sync
-    func syncModelWithView(){
-       
-        
-        title =  Const.App.appName
-        imageView.image = model.image
-        titleLabel.text = model.title
-        authorsLabel.text = convertArrayToString(model.authors)
-        tagsLabel.text = convertArrayToString(model.tags)
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        syncModelWithView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,6 +33,13 @@ class BVCBookViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        title = model.title
+        let req = NSURLRequest(URL: model.pdfURL)
+        webView.loadRequest(req)
+        
+    }
 
     /*
     // MARK: - Navigation
