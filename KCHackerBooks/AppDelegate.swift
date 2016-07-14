@@ -25,14 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let name = defaults.objectForKey(Const.UserDefaultKeys.jsonFile) as? String{
             let filePath = try PathForFile(name, directory: nil)
             print (filePath)
-            //changeURL = true
             json = try loadJSONFromLocalFile(filePath)
             
         } else {
             json = try DownloadJSON()
-           
-            
-            //changeURL = true
             defaults.setObject(Const.FilesName.booksFile, forKey: Const.UserDefaultKeys.jsonFile)
         }
             
@@ -41,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for dict in json{
             do{
                 let char = try decode (hackerBook: dict)
-                
-                //fillLibraryTagsArrayWithTags(char.tags)
                 chars.append(char)
                 tags = fillArrayWithNotRepeatedElements(tags, elementsToAdd: char.tags)
             }catch{

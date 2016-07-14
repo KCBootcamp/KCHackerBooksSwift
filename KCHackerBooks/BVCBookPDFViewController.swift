@@ -8,9 +8,10 @@
 
 import UIKit
 
-class BVCBookPDFViewController: UIViewController {
+class BVCBookPDFViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     let model : BVCBook
     
     init(model: BVCBook){
@@ -35,20 +36,22 @@ class BVCBookPDFViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        title = model.title
-        let req = NSURLRequest(URL: model.pdfURL)
-        webView.loadRequest(req)
+        sycModelWithView()
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - Sync
+    func sycModelWithView(){
+        title = model.title
+        activityView.startAnimating()
+        let req = NSURLRequest(URL: model.pdfURL)
+        webView.delegate = self
+        webView.loadRequest(req)
     }
-    */
 
+    //MARK: - UIWebViewDelegate
+    func webViewDidFinishLoad(webView: UIWebView) {
+        activityView.stopAnimating()
+        activityView.hidden = true
+    }
 }

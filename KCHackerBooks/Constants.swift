@@ -22,8 +22,9 @@ struct Const {
     }
     
     struct FilesName {
-        static let booksFile    =   "books_readable.json"
-        
+        static let booksFile        =   "books_readable.json"
+        static let favoriteImage    =   "favorites.png"
+        static let noFavoriteImage  =   "no-favorites.png"
     }
     
     struct DownloadUrls {

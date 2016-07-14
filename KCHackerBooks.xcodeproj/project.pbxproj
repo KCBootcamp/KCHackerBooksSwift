@@ -25,6 +25,8 @@
 		7FAACA581D36C250005593C2 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAACA571D36C250005593C2 /* LibraryTableViewController.swift */; };
 		7FAACA5B1D36CD26005593C2 /* BVCBookPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAACA591D36CD26005593C2 /* BVCBookPDFViewController.swift */; };
 		7FAACA5C1D36CD26005593C2 /* BVCBookPDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAACA5A1D36CD26005593C2 /* BVCBookPDFViewController.xib */; };
+		7FAACA631D37B307005593C2 /* favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FAACA611D37B307005593C2 /* favorites.png */; };
+		7FAACA641D37B307005593C2 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FAACA621D37B307005593C2 /* no-favorites.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		7FAACA571D36C250005593C2 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		7FAACA591D36CD26005593C2 /* BVCBookPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVCBookPDFViewController.swift; sourceTree = "<group>"; };
 		7FAACA5A1D36CD26005593C2 /* BVCBookPDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BVCBookPDFViewController.xib; sourceTree = "<group>"; };
+		7FAACA611D37B307005593C2 /* favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites.png; sourceTree = "<group>"; };
+		7FAACA621D37B307005593C2 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +173,8 @@
 		7F073F5C1D2FB4920015F2AC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7FAACA5D1D37ABDB005593C2 /* favorites.png */,
-				7FAACA5E1D37ABDB005593C2 /* no-favorites.png */,
+				7FAACA611D37B307005593C2 /* favorites.png */,
+				7FAACA621D37B307005593C2 /* no-favorites.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -314,10 +318,10 @@
 			files = (
 				7FAACA5C1D36CD26005593C2 /* BVCBookPDFViewController.xib in Resources */,
 				7F073F371D2FAE040015F2AC /* LaunchScreen.storyboard in Resources */,
+				7FAACA631D37B307005593C2 /* favorites.png in Resources */,
 				7FAACA521D36774E005593C2 /* BVCBookViewController.xib in Resources */,
-				7FAACA601D37ABDB005593C2 /* no-favorites.png in Resources */,
+				7FAACA641D37B307005593C2 /* no-favorites.png in Resources */,
 				7F073F341D2FAE040015F2AC /* Assets.xcassets in Resources */,
-				7FAACA5F1D37ABDB005593C2 /* favorites.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

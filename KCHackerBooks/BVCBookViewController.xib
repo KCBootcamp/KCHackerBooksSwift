@@ -14,7 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BVCBookViewController" customModule="KCHackerBooks" customModuleProvider="target">
             <connections>
                 <outlet property="authorsLabel" destination="dnJ-Mr-TD3" id="whx-vp-pNP"/>
-                <outlet property="favImageView" destination="CYL-4M-FIs" id="AJp-Xb-6ii"/>
+                <outlet property="favImageView" destination="X0h-Ym-CXE" id="fZa-d1-Sy2"/>
                 <outlet property="imageView" destination="EuS-Bg-mMI" id="fei-fr-iCa"/>
                 <outlet property="tagsLabel" destination="X0d-Ud-VXJ" id="SWQ-FN-CUq"/>
                 <outlet property="titleLabel" destination="Eku-jg-c24" id="7oJ-0d-Bqn"/>
@@ -114,7 +114,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0e-sY-Ele">
-                            <rect key="frame" x="209" y="725" width="183" height="57"/>
+                            <rect key="frame" x="209" y="845" width="183" height="57"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="32"/>
                             <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
@@ -136,6 +136,7 @@
                         <constraint firstItem="EuS-Bg-mMI" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="4sS-G6-Yzp"/>
                         <constraint firstItem="Eku-jg-c24" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="9YL-hT-mV1"/>
                         <constraint firstItem="wI3-eN-HKW" firstAttribute="top" secondItem="EuS-Bg-mMI" secondAttribute="bottom" constant="40" id="AM2-Ms-Oyr"/>
+                        <constraint firstAttribute="bottom" secondItem="F0e-sY-Ele" secondAttribute="bottom" constant="40" id="C6b-fU-2I0"/>
                         <constraint firstItem="EuS-Bg-mMI" firstAttribute="top" secondItem="Eku-jg-c24" secondAttribute="bottom" constant="40" id="GF3-Sj-Yja"/>
                         <constraint firstItem="dnJ-Mr-TD3" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="NHX-lg-I5u"/>
                         <constraint firstAttribute="trailing" secondItem="EuS-Bg-mMI" secondAttribute="trailing" constant="200" id="TV1-fb-xvz"/>
@@ -146,7 +147,6 @@
                         <constraint firstItem="X0d-Ud-VXJ" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="eSb-Kq-HiV"/>
                         <constraint firstItem="F0e-sY-Ele" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="gP6-4C-Bid"/>
                         <constraint firstItem="wI3-eN-HKW" firstAttribute="centerX" secondItem="CYL-4M-FIs" secondAttribute="centerX" id="gxN-no-so2"/>
-                        <constraint firstAttribute="bottom" secondItem="X0d-Ud-VXJ" secondAttribute="bottom" constant="176" id="k57-aN-Lao"/>
                         <constraint firstItem="EuS-Bg-mMI" firstAttribute="leading" secondItem="CYL-4M-FIs" secondAttribute="leading" constant="200" id="njp-pt-bFu"/>
                         <constraint firstItem="Eku-jg-c24" firstAttribute="top" secondItem="CYL-4M-FIs" secondAttribute="top" constant="40" id="qV2-OW-sME"/>
                         <constraint firstItem="X0h-Ym-CXE" firstAttribute="top" secondItem="X0d-Ud-VXJ" secondAttribute="bottom" constant="40" id="rql-AX-oJ3"/>

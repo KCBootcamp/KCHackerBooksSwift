@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BVCBookPDFViewController" customModule="KCHackerBooks" customModuleProvider="target">
             <connections>
+                <outlet property="activityView" destination="7zj-Os-ZSu" id="40l-AV-Ckz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="WoQ-eC-gGc" id="sox-FZ-iAN"/>
             </connections>
@@ -20,11 +21,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                 </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7zj-Os-ZSu">
+                    <rect key="frame" x="282" y="281" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="WoQ-eC-gGc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q8c-eR-z0T"/>
                 <constraint firstAttribute="trailing" secondItem="WoQ-eC-gGc" secondAttribute="trailing" id="bzI-VP-HY0"/>
+                <constraint firstItem="7zj-Os-ZSu" firstAttribute="centerY" secondItem="WoQ-eC-gGc" secondAttribute="centerY" id="dSg-uh-eJz"/>
+                <constraint firstItem="7zj-Os-ZSu" firstAttribute="centerX" secondItem="WoQ-eC-gGc" secondAttribute="centerX" id="fSh-RW-mNR"/>
                 <constraint firstItem="WoQ-eC-gGc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mg6-QF-U2E"/>
                 <constraint firstAttribute="bottom" secondItem="WoQ-eC-gGc" secondAttribute="bottom" id="sXh-gM-pHi"/>
             </constraints>
