@@ -14,6 +14,7 @@ class BVCBookViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var tagsLabel: UILabel!
+    @IBOutlet weak var favImageView: UIScrollView!
     
     let model : BVCBook
     
@@ -41,6 +42,12 @@ class BVCBookViewController: UIViewController {
         titleLabel.text = model.title
         authorsLabel.text = convertArrayToString(model.authors)
         tagsLabel.text = convertArrayToString(model.tags)
+        
+        if (model.isFavourite){
+            favImageView.image = UIImage(named: Const.FilesName.favouriteImage)
+        }else{
+            favImageView.image = UIImage(named: Const.FilesName.noFavouriteImage)
+        }
         
     }
 
