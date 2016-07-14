@@ -16,4 +16,5 @@ enum BVCHackersBookErrors : ErrorType {
     case wrongPath
     case urlConversionError
     case downloadError
+    case arrayCreationError
 }

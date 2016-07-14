@@ -39,6 +39,19 @@ func convertArrayToString(array: [String]) -> String? {
 }
 
 
+func fillArrayWithNotRepeatedElements(array: [String], elementsToAdd: [String]?)  -> [String]{
+    var newArray : [String] = []
+    if let elements = elementsToAdd{
+        newArray.appendContentsOf(array)
+        for element in elements{
+            if !array.contains(element){
+                newArray.append(element)
+            }
+        }
+    }
+    return newArray
+}
+
 //MARK: - Path and URL Utilities
 func PathForFile(fileName: String, directory: String?) throws-> String{
     var documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
