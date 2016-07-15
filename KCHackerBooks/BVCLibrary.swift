@@ -63,8 +63,10 @@ class BVCLibrary  {
         var booksForTagArray : BVCBookArray = []
         if let tag = tag {
             for book in books {
-                if ((book.tags?.contains(tag)) != nil){
+                if let bookTags=book.tags{
+                if ((bookTags.contains(tag))){
                     booksForTagArray.append(book)
+                }
                 }
             }
             return booksForTagArray

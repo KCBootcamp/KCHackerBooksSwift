@@ -18,10 +18,12 @@ class BVCBookViewController: UIViewController {
     
     
     let model : BVCBook
+    var isFavorite : Bool
     
     //MARK: - Initialization
     init(model: BVCBook){
         self.model = model
+        self.isFavorite=model.isFavourite
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,19 +45,31 @@ class BVCBookViewController: UIViewController {
         titleLabel.text = model.title
         authorsLabel.text = convertArrayToString(model.authors)
         tagsLabel.text = convertArrayToString(model.tags)
+        displayFavoriteImage()
         
-        if (model.isFavourite){
+    }
+    
+    func displayFavoriteImage(){
+        if (isFavorite){
             favImageView.image = UIImage(named: Const.FilesName.favoriteImage)
         }else{
             favImageView.image = UIImage(named: Const.FilesName.noFavoriteImage)
         }
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(BVCBookViewController.imageTapped(_:)))
+        favImageView.userInteractionEnabled = true
+        favImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func imageTapped(img: AnyObject)
+    {
+        isFavorite = !isFavorite
+        //Change status in persistence
+        displayFavoriteImage()
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -67,16 +81,5 @@ class BVCBookViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
