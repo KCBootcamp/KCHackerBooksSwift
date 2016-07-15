@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             splitVC.delegate = bookVC
             
-        
+            libraryVC.delegate = bookVC
             
         // Empotrarlo en un navigation
                 // Asignar el NAV como rootVC

@@ -13,13 +13,14 @@ class BVCLibraryTableViewController: UITableViewController {
     
     //MARK: - Properties
     let model : BVCLibrary
-    var delegate : BVCLibraryTableViewControllerDelegate?
+    var delegate : LibraryTableViewControllerDelegate?
     
     //MARK: - Initialization
     init(model: BVCLibrary){
         self.model = model
         
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +35,7 @@ class BVCLibraryTableViewController: UITableViewController {
          
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 50.0;
+        title =  Const.App.appName
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -127,7 +129,10 @@ class BVCLibraryTableViewController: UITableViewController {
         if let tags =  model.tags,
             sectionBookArray = model.booksForTag(tags[indexPath.section-1]){
             let book = sectionBookArray[indexPath.row]
-            navigationController?.pushViewController(BVCBookViewController(model:book), animated: true)
+            
+            delegate?.libraryViewController(self, didSelectBook: book)
+            
+            //navigationController?.pushViewController(BVCBookViewController(model:book), animated: true)
         }
     }
     
@@ -171,8 +176,8 @@ class BVCLibraryTableViewController: UITableViewController {
 }
 
 
-protocol BVCLibraryTableViewControllerDelegate {
+protocol LibraryTableViewControllerDelegate {
     
+    func libraryViewController(vc : BVCLibraryTableViewController, didSelectBook book: BVCBook)
     
-    func universeViewController(vc : BVCBookViewController, didSelectBook book: BVCBook)
 }

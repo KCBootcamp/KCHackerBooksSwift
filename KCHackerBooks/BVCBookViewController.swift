@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BVCBookViewController: UIViewController, UISplitViewControllerDelegate {
+class BVCBookViewController: UIViewController, UISplitViewControllerDelegate, LibraryTableViewControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -19,7 +19,7 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate {
     
     
     
-    let model : BVCBook
+    var model : BVCBook
     var isFavorite : Bool
     
     //MARK: - Initialization
@@ -42,7 +42,7 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate {
     func syncModelWithView(){
        
         
-        title =  Const.App.appName
+        title =  model.title
         imageView.image = model.image
         titleLabel.text = model.title
         authorsLabel.text = convertArrayToString(model.authors)
@@ -91,7 +91,7 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: -UISplitViewControllerDelegate
+    //MARK: - UISplitViewControllerDelegate
     func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
         if (displayMode == UISplitViewControllerDisplayMode.PrimaryHidden) {
             if let splitViewController = splitViewController{
@@ -102,7 +102,10 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate {
         }
     }
     
-    
-
+    //MARK: - LibraryTableViewControllerDelegate
+    func libraryViewController(vc: BVCLibraryTableViewController, didSelectBook book: BVCBook) {
+        model = book
+        syncModelWithView()
+    }
 
 }
