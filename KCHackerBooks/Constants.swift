@@ -12,6 +12,8 @@ struct Const {
     
     struct App {
         static let appName      =   "Geek Reader"
+        static let notificationBookChanged = "bookChanged"
+        static let bookKey = "bookKey"
     }
     struct UserDefaultKeys {
         static let jsonFile     =   "json"

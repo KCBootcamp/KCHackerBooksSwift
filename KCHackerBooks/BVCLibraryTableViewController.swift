@@ -132,6 +132,8 @@ class BVCLibraryTableViewController: UITableViewController {
             
             delegate?.libraryViewController(self, didSelectBook: book)
             
+            NSNotificationCenter.defaultCenter().postNotificationName(Const.App.notificationBookChanged, object: self, userInfo: [Const.App.bookKey: book])
+            
             //navigationController?.pushViewController(BVCBookViewController(model:book), animated: true)
         }
     }

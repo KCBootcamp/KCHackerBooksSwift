@@ -48,12 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let model = BVCLibrary (books: chars, tags: tags)
          print("Model loaded")
         //Creamos  controladores
-            //if 
+            
         let firstTagBooks = model.booksForTag(tags[0])
                 let bookVC = BVCBookViewController(model: firstTagBooks![0])
-                
-                
-            //}
+
             
             let bookNavVC = UINavigationController (rootViewController: bookVC)
             

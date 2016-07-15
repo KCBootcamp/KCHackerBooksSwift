@@ -12,7 +12,7 @@ class BVCBookPDFViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
-    let model : BVCBook
+    var model : BVCBook
     
     init(model: BVCBook){
         self.model = model
@@ -36,8 +36,16 @@ class BVCBookPDFViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        let nCenter = NSNotificationCenter.defaultCenter()
+        nCenter.addObserver(self, selector:#selector(bookDidChange), name: Const.App.notificationBookChanged, object: nil)
         sycModelWithView()
         
+    }
+    
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     //MARK: - Sync
@@ -54,4 +62,19 @@ class BVCBookPDFViewController: UIViewController, UIWebViewDelegate {
         activityView.stopAnimating()
         activityView.hidden = true
     }
+    
+    func bookDidChange(notification : NSNotification) {
+   
+        
+        let info = notification.userInfo!
+        
+        let book = info[Const.App.bookKey] as? BVCBook
+        
+        model = book!
+        
+        sycModelWithView()
+     
+        
+    }
+    
 }
