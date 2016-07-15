@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BVCLibraryTableViewController: UITableViewController, UISplitViewControllerDelegate {
+class BVCLibraryTableViewController: UITableViewController {
     
     
     //MARK: - Properties
@@ -31,9 +31,9 @@ class BVCLibraryTableViewController: UITableViewController, UISplitViewControlle
         super.viewDidLoad()
         
         tableView.registerNib( UINib (nibName: "BVCBookTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "BookCell")
-        
+         
         tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = 60.0;
+        tableView.estimatedRowHeight = 50.0;
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -131,7 +131,8 @@ class BVCLibraryTableViewController: UITableViewController, UISplitViewControlle
         }
     }
     
-    /*
+    
+       /*
      // Override to support conditional editing of the table view.
      override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
      // Return false if you do not want the specified item to be editable.

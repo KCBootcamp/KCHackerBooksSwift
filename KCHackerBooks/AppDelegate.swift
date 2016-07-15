@@ -44,15 +44,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        //Podemos crear el modelo
+        //Creamon el modelo
         let model = BVCLibrary (books: chars, tags: tags)
          print("Model loaded")
-        //Crear un VC
-        let vc = BVCBookViewController(model: model.books[0])
-        // Empotrarlo en un anvigation
-        let navVC = UINavigationController (rootViewController: vc)
-        // Asignar el NAV como rootVC
-        window?.rootViewController = navVC
+        //Creamos  controladores
+            //if 
+        let firstTagBooks = model.booksForTag(tags[0])
+                let bookVC = BVCBookViewController(model: firstTagBooks![0])
+                
+                
+            //}
+            
+            let bookNavVC = UINavigationController (rootViewController: bookVC)
+            
+            let libraryVC = BVCLibraryTableViewController (model: model)
+            
+            let libraryNavVC = UINavigationController (rootViewController: libraryVC)
+            
+        //Creamos el combinador
+        let splitVC = UISplitViewController()
+            
+            splitVC.viewControllers = [libraryNavVC, bookNavVC]
+            
+            splitVC.delegate = bookVC
+            
+        
+            
+        // Empotrarlo en un navigation
+                // Asignar el NAV como rootVC
+        window?.rootViewController = splitVC
         // Hacer visible & key a la window
         window?.makeKeyAndVisible()
 

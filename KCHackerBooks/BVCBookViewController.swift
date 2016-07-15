@@ -8,13 +8,15 @@
 
 import UIKit
 
-class BVCBookViewController: UIViewController {
+class BVCBookViewController: UIViewController, UISplitViewControllerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var favImageView: UIImageView!
+    
+    
     
     
     let model : BVCBook
@@ -75,11 +77,32 @@ class BVCBookViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         syncModelWithView()
+        if (splitViewController?.displayMode == UISplitViewControllerDisplayMode.PrimaryHidden){
+            
+            if let splitViewController = splitViewController{
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Library", style: (splitViewController.displayModeButtonItem().style), target:splitViewController.displayModeButtonItem().target, action: splitViewController.displayModeButtonItem().action)
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: -UISplitViewControllerDelegate
+    func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+        if (displayMode == UISplitViewControllerDisplayMode.PrimaryHidden) {
+            if let splitViewController = splitViewController{
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Library", style: (splitViewController.displayModeButtonItem().style), target:splitViewController.displayModeButtonItem().target, action: splitViewController.displayModeButtonItem().action)
+            }
+        }else{
+            navigationItem.rightBarButtonItem = nil;
+        }
+    }
+    
+    
+
 
 }
