@@ -15,6 +15,7 @@ struct Const {
         static let notificationBookChanged = "bookChanged"
         static let bookKey = "bookKey"
         static let notificationBookFavoriteStatusChanged = "bookFavoriteStatusChanged"
+        static let favorite = "Favorites"
     }
     struct UserDefaultKeys {
         static let jsonFile     =   "json"

@@ -79,8 +79,7 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0{
-            //TODO Change to number of books in favorites
-            return 0
+            return model.books.filter({$0.isFavourite == true}).count
         }else{
             if let tags = model.tags{
                 return model.booksCountForTag(tags[section-1])
@@ -101,21 +100,31 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
         if cell == nil{
             cell = BVCBookTableViewCell()
         }
-        
+        var book : BVCBook
+        if (indexPath.section == 0){
+            let favBooks = model.books.filter({$0.isFavourite == true})
+            book = favBooks[indexPath.row]
+        } else {
+            
             if let tags =  model.tags,
                 sectionBookArray = model.booksForTag(tags[indexPath.section-1]){
-                let book = sectionBookArray[indexPath.row]
-                cell?.bookImageView.image = book.image
-                cell?.title.text = book.title
-                if (book.isFavourite){
-                    cell?.favImageView.image = UIImage(named: Const.FilesName.favoriteImage)
-                }else{
-                    cell?.favImageView.image = UIImage(named: Const.FilesName.noFavoriteImage)
-                }
+                
+                book = sectionBookArray[indexPath.row]
+
             } else {
-                //TODO complete error
-                BVCHackersBookErrors.wrongPath
+                book = BVCBook(title: "", authors: nil, tags: nil, image: nil, pdfURL: NSURL(string: "" )!)
             }
+        }
+        
+            cell?.bookImageView.image = book.image
+            cell?.title.text = book.title
+            if (book.isFavourite){
+                cell?.favImageView.image = UIImage(named: Const.FilesName.favoriteImage)
+            }else{
+                cell?.favImageView.image = UIImage(named: Const.FilesName.noFavoriteImage)
+            }
+            
+        
 
         return cell!
     }
@@ -124,10 +133,10 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section==0{
             //TODO change
-            return "Favorites"
+            return Const.App.favorite.uppercaseString
         }else{
             if let tags =  model.tags{
-                 return tags[section-1]
+                 return tags[section-1].uppercaseString
             }else{
                 return ""
             }
@@ -142,17 +151,23 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if let tags =  model.tags,
-            sectionBookArray = model.booksForTag(tags[indexPath.section-1]){
-            let book = sectionBookArray[indexPath.row]
-            
-            delegate?.libraryViewController(self, didSelectBook: book)
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(Const.App.notificationBookChanged, object: self, userInfo: [Const.App.bookKey: book])
-            
-            //navigationController?.pushViewController(BVCBookViewController(model:book), animated: true)
+        let book : BVCBook
+        if indexPath.section == 0 {
+            let favBooks = model.books.filter({$0.isFavourite == true})
+            book = favBooks[indexPath.row]
+        }else{
+            if let tags =  model.tags,
+                sectionBookArray = model.booksForTag(tags[indexPath.section-1]){
+                book = sectionBookArray[indexPath.row]
+            }else{
+                book = BVCBook (title: "", authors: nil, tags: nil, image: nil, pdfURL: NSURL(string:"")!)
+            }
         }
+        delegate?.libraryViewController(self, didSelectBook: book)
+            
+        NSNotificationCenter.defaultCenter().postNotificationName(Const.App.notificationBookChanged, object: self, userInfo: [Const.App.bookKey: book])
+
+        
     }
     
     
