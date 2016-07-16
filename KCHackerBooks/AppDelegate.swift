@@ -43,40 +43,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error al procesar \(dict)")
             }
         }
+            
+        let favorites = loadFavoritesBooks()
         
-        //Creamon el modelo
-        let model = BVCLibrary (books: chars, tags: tags)
+        let model = BVCLibrary (books: chars, tags: tags, favoriteBooks: favorites)
          print("Model loaded")
-        //Creamos  controladores
             
-        let firstTagBooks = model.booksForTag(tags[0])
-                let bookVC = BVCBookViewController(model: firstTagBooks![0])
-
+            let rootVC : UIViewController
             
-            let bookNavVC = UINavigationController (rootViewController: bookVC)
+            if(!(UIDevice.currentDevice().userInterfaceIdiom == .Phone)){
+                rootVC = viewControllerForIpadWithModel(model)
+            }else{
+                rootVC = viewControllersForIphoneWithModel(model)
+            }
             
-            let libraryVC = BVCLibraryTableViewController (model: model)
-            
-            let libraryNavVC = UINavigationController (rootViewController: libraryVC)
-            
-        //Creamos el combinador
-        let splitVC = UISplitViewController()
-            
-            splitVC.viewControllers = [libraryNavVC, bookNavVC]
-            
-            splitVC.delegate = bookVC
-            
-            libraryVC.delegate = bookVC
-            
-        // Empotrarlo en un navigation
-                // Asignar el NAV como rootVC
-        window?.rootViewController = splitVC
+        window?.rootViewController = rootVC
         // Hacer visible & key a la window
         window?.makeKeyAndVisible()
 
         return true
     }catch{
-        fatalError("Error while loading JSON")
+        fatalError("Error launching App")
     }
     }
 
@@ -102,6 +89,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func viewControllersForIphoneWithModel(model: BVCLibrary) -> UIViewController {
+        let libraryVC = BVCLibraryTableViewController (model: model)
+        
+        let libraryNavVC = UINavigationController (rootViewController: libraryVC)
+        
+        libraryVC.delegate = libraryVC
+        
+        return libraryNavVC
+    }
+    
+    func viewControllerForIpadWithModel(model: BVCLibrary) -> UIViewController {
+        let splitVC = UISplitViewController()
+        
+        if let tags = model.tags{
+            let firstTagBooks = model.booksForTag(tags[0])
+        
+            let bookVC = BVCBookViewController(model: firstTagBooks![0])
+        
+            let bookNavVC = UINavigationController (rootViewController: bookVC)
+        
+            let libraryVC = BVCLibraryTableViewController (model: model)
+        
+            let libraryNavVC = UINavigationController (rootViewController: libraryVC)
+        
+            splitVC.viewControllers = [libraryNavVC, bookNavVC]
+        
+            splitVC.delegate = bookVC
+        
+            libraryVC.delegate = bookVC
+        }
+        
+        return splitVC
+
+    }
 
 }
 

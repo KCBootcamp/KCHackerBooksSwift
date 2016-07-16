@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BVCLibraryTableViewController: UITableViewController {
+class BVCLibraryTableViewController: UITableViewController, LibraryTableViewControllerDelegate {
     
     
     //MARK: - Properties
@@ -43,9 +43,26 @@ class BVCLibraryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let nCenter = NSNotificationCenter.defaultCenter()
+        nCenter.addObserver(self, selector:#selector(bookFavouriteStatusDidChange), name: Const.App.notificationBookFavoriteStatusChanged, object: nil)
+
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func bookFavouriteStatusDidChange(notification: NSNotification) {
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -139,6 +156,11 @@ class BVCLibraryTableViewController: UITableViewController {
     }
     
     
+    //MARK: - LibraryTableViewControllerDelegate
+    
+    func libraryViewController(vc: BVCLibraryTableViewController, didSelectBook book: BVCBook) {
+        navigationController?.pushViewController(BVCBookViewController(model:book), animated: true)
+    }
        /*
      // Override to support conditional editing of the table view.
      override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

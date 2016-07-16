@@ -14,9 +14,11 @@ struct Const {
         static let appName      =   "Geek Reader"
         static let notificationBookChanged = "bookChanged"
         static let bookKey = "bookKey"
+        static let notificationBookFavoriteStatusChanged = "bookFavoriteStatusChanged"
     }
     struct UserDefaultKeys {
         static let jsonFile     =   "json"
+        static let favorites    =   "favorites"
     }
     struct RelativePathValues{
         static let imagesPath   =   "images/"

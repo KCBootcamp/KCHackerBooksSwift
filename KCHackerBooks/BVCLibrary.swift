@@ -11,13 +11,14 @@ import Foundation
 class BVCLibrary  {
     
     //MARK: - Initializers
-    init (books : [BVCBook], tags: [String]?){
+    init (books : [BVCBook], tags: [String]?, favoriteBooks: [String]?){
         self.books  =   books
         self.tags   =   tags
+        defineFavoriteBooks(favoriteBooks)
     }
     
     //MARK: - Stored properties
-    let books   :   [BVCBook]
+    var books   :   [BVCBook]
     let tags    :   [String]?
     
     //MARK: - Computed properties
@@ -85,5 +86,29 @@ class BVCLibrary  {
         }
     }
     
+    func bookIndexForDescription(description: String) -> Int?{
+        //TODO modify
+        for book in books {
+            if book.description == description{
+                if let index = books.indexOf(book){
+                    return index
+                }
+            }
+        }
+        return nil
+    }
+    
+    //MARK: - Favorite Books
+    func defineFavoriteBooks(favoritesBooks: [String]?){
+        if let favoritesBooks = favoritesBooks{
+            
+            for book in favoritesBooks {
+                if let index = bookIndexForDescription(book){
+                    books[index].isFavourite = true
+                }
+            }
+        }
+    }
+
     
 }

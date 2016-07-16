@@ -20,12 +20,10 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate, Li
     
     
     var model : BVCBook
-    var isFavorite : Bool
     
     //MARK: - Initialization
     init(model: BVCBook){
         self.model = model
-        self.isFavorite=model.isFavourite
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,7 +50,7 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate, Li
     }
     
     func displayFavoriteImage(){
-        if (isFavorite){
+        if (model.isFavourite){
             favImageView.image = UIImage(named: Const.FilesName.favoriteImage)
         }else{
             favImageView.image = UIImage(named: Const.FilesName.noFavoriteImage)
@@ -68,8 +66,11 @@ class BVCBookViewController: UIViewController, UISplitViewControllerDelegate, Li
     
     func imageTapped(img: AnyObject)
     {
-        isFavorite = !isFavorite
-        //Change status in persistence
+        
+        changeFavoriteStatusforBook(model)
+        model.isFavourite = !model.isFavourite
+        NSNotificationCenter.defaultCenter().postNotificationName(Const.App.notificationBookFavoriteStatusChanged, object:self, userInfo: [Const.App.bookKey : model])
+        
         displayFavoriteImage()
         
     }

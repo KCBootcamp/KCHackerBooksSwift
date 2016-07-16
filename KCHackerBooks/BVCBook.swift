@@ -17,7 +17,7 @@ class BVCBook : Comparable {
     let tags        :   [String]?
     let image       :   UIImage?
     let pdfURL      :   NSURL
-    let isFavourite :   Bool
+    var isFavourite :   Bool
     
     
     //MARK: - Initializers

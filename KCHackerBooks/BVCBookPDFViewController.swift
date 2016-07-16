@@ -68,9 +68,9 @@ class BVCBookPDFViewController: UIViewController, UIWebViewDelegate {
         
         let info = notification.userInfo!
         
-        let book = info[Const.App.bookKey] as? BVCBook
+        let book = info[Const.App.bookKey] as! BVCBook
         
-        model = book!
+        model = book
         
         sycModelWithView()
      

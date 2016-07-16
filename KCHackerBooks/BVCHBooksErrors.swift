@@ -17,4 +17,5 @@ enum BVCHackersBookErrors : ErrorType {
     case urlConversionError
     case downloadError
     case arrayCreationError
+    case resourceNotFound
 }

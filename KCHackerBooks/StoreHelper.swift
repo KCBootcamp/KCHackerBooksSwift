@@ -105,3 +105,43 @@ func convertDataToJSONArray(data: NSData) throws -> JSONArray{
         throw BVCHackersBookErrors.jsonParsingError
     }
 }
+
+//MARK: - Favorites
+
+func loadFavoritesBooks()  -> [String]? {
+    var favorites : [String] = []
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if let favs = defaults.objectForKey(Const.UserDefaultKeys.favorites) as? [String]{
+        favorites = favs
+    }
+    return favorites
+}
+
+func saveFavoriteBook(book: BVCBook){
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if var favorites = defaults.objectForKey(Const.UserDefaultKeys.favorites) as? [String]{
+        favorites.append(book.description)
+        defaults.setObject(favorites, forKey: Const.UserDefaultKeys.favorites)
+    }else{
+        let favorites = [book.description]
+        defaults.setObject(favorites, forKey: Const.UserDefaultKeys.favorites)
+    }
+    
+}
+
+func deleteFavoriteBook(book: BVCBook) {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if var favorites = defaults.objectForKey(Const.UserDefaultKeys.favorites) as? [String], let index = favorites.indexOf(book.description){
+        favorites.removeAtIndex(index)
+        defaults.setObject(favorites, forKey: Const.UserDefaultKeys.favorites)
+    }
+}
+
+func changeFavoriteStatusforBook(book: BVCBook){
+    if (!book.isFavourite){
+        saveFavoriteBook(book)
+    } else {
+        deleteFavoriteBook(book)
+    }
+    
+}
