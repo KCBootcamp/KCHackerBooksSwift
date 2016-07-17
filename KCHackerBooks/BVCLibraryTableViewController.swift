@@ -31,7 +31,7 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerNib( UINib (nibName: "BVCBookTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "BookCell")
+        tableView.registerNib( UINib (nibName: Const.App.bookTableCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: Const.App.bookTableCellIdentifier)
          
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 50.0;
@@ -92,7 +92,7 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     
     //MARK: - TableViewDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cellId = "BookCell"
+            let cellId = Const.App.bookTableCellIdentifier
         
             var cell  =
                 tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as? BVCBookTableViewCell
@@ -176,41 +176,6 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     func libraryViewController(vc: BVCLibraryTableViewController, didSelectBook book: BVCBook) {
         navigationController?.pushViewController(BVCBookViewController(model:book), animated: true)
     }
-       /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
     
 }
 

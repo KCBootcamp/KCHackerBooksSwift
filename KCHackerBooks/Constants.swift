@@ -16,6 +16,8 @@ struct Const {
         static let bookKey = "bookKey"
         static let notificationBookFavoriteStatusChanged = "bookFavoriteStatusChanged"
         static let favorite = "Favorites"
+        static let bookTableCell = "BVCBookTableViewCell"
+        static let bookTableCellIdentifier = "bookTableCellId"
     }
     struct UserDefaultKeys {
         static let jsonFile     =   "json"
