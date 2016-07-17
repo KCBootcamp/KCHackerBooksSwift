@@ -132,7 +132,6 @@ class BVCLibraryTableViewController: UITableViewController, LibraryTableViewCont
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section==0{
-            //TODO change
             return Const.App.favorite.uppercaseString
         }else{
             if let tags =  model.tags{

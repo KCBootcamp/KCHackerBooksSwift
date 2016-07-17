@@ -87,7 +87,6 @@ class BVCLibrary  {
     }
     
     func bookIndexForDescription(description: String) -> Int?{
-        //TODO modify
         for book in books {
             if book.description == description{
                 if let index = books.indexOf(book){

@@ -63,6 +63,15 @@ class BVCBookPDFViewController: UIViewController, UIWebViewDelegate {
         activityView.hidden = true
     }
     
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        let alert = UIAlertController(title: "Book not found", message: "There has been an error loading the book, please try to download it again", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default) { (action: UIAlertAction) in
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        alert.addAction(okAction)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func bookDidChange(notification : NSNotification) {
    
         
